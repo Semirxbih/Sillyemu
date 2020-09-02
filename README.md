@@ -1,2 +1,1 @@
-# Sillyemu.com
-# Sillyemu
+# Sillyemu - A minimalist Bulma WordPress Theme
