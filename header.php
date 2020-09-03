@@ -1,8 +1,31 @@
+<?php
+/**
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Sillyemu
+ */
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="is-fullheight">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class() ?>>
+    <div id="page" class="site">
+<!--        --><?php //sillyemu_screen_reader_text(); ?>
+        <header id="header" class="nav-down">
+            <nav id="site-navigation" class="navbar container" role="navigation">
+
+            </nav>
+        </header>
+
+        <div id="content" class="site-content">
