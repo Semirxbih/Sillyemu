@@ -24,7 +24,14 @@
 <!--        --><?php //sillyemu_screen_reader_text(); ?>
         <header id="header" class="nav-down">
             <nav id="site-navigation" class="navbar container" role="navigation">
-
+                <div class="navbar-brand">
+                    <?php sillyemu_navbar_burger(); ?>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-start">
+                        <p>Test</p>
+                    </div>
+                </div>
             </nav>
         </header>
 
