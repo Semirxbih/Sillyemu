@@ -53,6 +53,7 @@ if (!class_exists('Customizer'))
          */
         public function register(object $wp_customize)
         {
+            // Login Screen
             $wp_customize->add_panel('login_panel',
                 [
                     'title' => __('Login Screen', 'login-customizer'),
@@ -115,6 +116,38 @@ if (!class_exists('Customizer'))
 //                        'style' => 'border: 1px solid rebeccapurple',
                         'placeholder' => __('Enter URL...'),
                     ],
+                ]
+            );
+
+            // Admin Customizer
+            $wp_customize->add_panel('admin_panel',
+                [
+                    'title' => __('Admin', 'admin-customizer'),
+                    'description' => esc_html__('Use this section for random UI configurations.'),
+                    'capability' => 'edit_theme_options',
+                ]
+            );
+            $wp_customize->add_section('admin_panel_ui',
+                [
+                    'title' => 'Admin UI',
+                    'panel' => 'admin_panel',
+                    'capability' => 'edit_theme_options',
+                ]
+            );
+            $wp_customize->add_setting('admin_panel_adminbar',
+                [
+                    'default' => '0',
+                    'transport' => 'refresh',
+                    'sanitize_callback' => '',
+                ]
+            );
+            $wp_customize->add_control('admin_panel_adminbar',
+                [
+                    'label' => __('Hide Admin bar'),
+                    'description' => esc_html__('Check the box if you would like to hide the admin bar for logged in users.'),
+                    'section' => 'admin_panel_ui',
+                    'type' => 'checkbox',
+                    'capability' => 'edit_theme_options',
                 ]
             );
         }
