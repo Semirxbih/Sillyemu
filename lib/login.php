@@ -3,13 +3,12 @@
 /**
  * Change wp-login.php logo
  *
- * Author: Semir Smajlovic
  */
 if (!function_exists('sillyemu_login_logo')) {
     function sillyemu_login_logo()
     {
         // @todo: Fix bug that doesn't show the default WordPress logo when there is no theme mod.
-        $logo_url = wp_get_attachment_url(get_theme_mod('login_panel_logo'));
+        $logo_url = wp_get_attachment_url(get_theme_mod('admin_login_panel_logo'));
         ?>
         <style type="text/css">
             .login h1 a {
@@ -32,7 +31,7 @@ add_action('login_head', 'sillyemu_login_logo');
  */
 if (!function_exists('sillyemu_login_url')) {
     function sillyemu_login_url() {
-        return esc_url(get_theme_mod('login_panel_logo_url'));
+        return esc_url(get_theme_mod('admin_login_panel_logo_url'));
     }
 }
 add_filter('login_headerurl', 'sillyemu_login_url');
