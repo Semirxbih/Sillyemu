@@ -8,10 +8,10 @@
  * @version 1.0
  */
 
+/**
+ * Enqueue scripts and styles
+ */
 if (!function_exists('sillyemu_scripts')) {
-    /**
-     * Enqueue scripts and styles
-     */
     function sillyemu_scripts() {
         wp_enqueue_style('bulma-style', get_template_directory_uri() . '/node_modules/bulma/css/bulma.css', [], time(), '');
     }
