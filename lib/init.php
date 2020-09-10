@@ -11,6 +11,8 @@ function sillyemu_constants() {
     define('PARENT_THEME_NAME_CAMELCASE', 'SillyEmu');
     define('PARENT_THEME_VERSION', '1.0.0');
     define('PARENT_THEME_STARTING_DATE', 'August 20th, 2020');
+
+    // Define theme locations
     define('PARENT_DIR', get_template_directory());
     define('PARENT_URL', get_template_directory_uri());
 }
