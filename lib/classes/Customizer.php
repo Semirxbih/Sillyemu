@@ -54,39 +54,32 @@ if (!class_exists('Customizer'))
         public function register(object $wp_customize)
         {
             // Login Screen
-            $wp_customize->add_panel('login_panel',
+            $wp_customize->add_section('admin_login_panel_section_logo',
                 [
-                    'title' => __('Login Screen', 'login-customizer'),
-                    'description' => esc_html__('Update your login screen section.'),
+                    'title' => 'Admin Login',
+                    'panel' => 'admin_panel',
                     'capability' => 'edit_theme_options',
                 ]
             );
-            $wp_customize->add_section('login_panel_section_logo',
-                [
-                    'title' => 'Logo',
-                    'panel' => 'login_panel',
-                    'capability' => 'edit_theme_options',
-                ]
-            );
-            $wp_customize->add_setting('login_panel_logo',
+            $wp_customize->add_setting('admin_login_panel_logo',
                 [
                     'default' => '',
                     'transport' => 'refresh',
                     'sanitize_callback' => 'absint',
                 ]
             );
-            $wp_customize->add_setting('login_panel_logo_url',
+            $wp_customize->add_setting('admin_login_panel_logo_url',
                 [
                     'default' => '',
                     'transport' => 'refresh',
                     'sanitize_callback' => 'sanitize_url',
                 ]
             );
-            $wp_customize->add_control(new WP_Customize_Cropped_Image_Control($wp_customize, 'login_panel_logo',
+            $wp_customize->add_control(new WP_Customize_Cropped_Image_Control($wp_customize, 'admin_login_panel_logo',
                 [
                     'label' => __('Login Logo'),
                     'description' => esc_html__( 'Upload a logo to be featured on the Admin login page' ),
-                    'section' => 'login_panel_section_logo',
+                    'section' => 'admin_login_panel_section_logo',
                     'priority' => 9, // Optional. Order priority to load the control. Default: 10
                     'mime_type' => 'image',
                     'flex_width' => false,
@@ -104,11 +97,11 @@ if (!class_exists('Customizer'))
                     ]
                 ]
             ));
-            $wp_customize->add_control('login_panel_logo_url',
+            $wp_customize->add_control('admin_login_panel_logo_url',
                 [
                     'label' => __('Logo URL'),
                     'description' => esc_html__('Please enter the url that will be used to represent the login logo.'),
-                    'section' => 'login_panel_section_logo',
+                    'section' => 'admin_login_panel_section_logo',
                     'type' => 'url',
                     'capability' => 'edit_theme_options',
                     'input_attrs' => [
