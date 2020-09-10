@@ -10,8 +10,7 @@
  * @since Sillyemu 1.0
  */
 
-require get_template_directory() . '/lib/login.php';
-require get_template_directory() . '/classes/Customizer.php';
+require_once __DIR__ . '/lib/init.php';
 
 if (!function_exists('sillyemu_setup')) {
     function sillyemu_setup() {
