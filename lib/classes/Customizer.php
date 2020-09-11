@@ -22,12 +22,13 @@ if (!class_exists('Customizer'))
          *
          * @return Customizer|null
          */
-        public static function init() : object
+        public static function init(): object
         {
             // If the class object is null, create new object
             if (null === self::$class) {
                 self::$class = new self();
             }
+
             return self::$class;
         }
 
@@ -44,11 +45,15 @@ if (!class_exists('Customizer'))
          */
         public function actions()
         {
+            $this->theme_support();
+            $this->adminbar_checkbox();
             add_action('customize_register', [$this, 'register'], 998);
             add_action('customize_register', [$this, 'deregister'], 999);
         }
 
         /**
+         * Register new sections
+         *
          * @param $wp_customize
          */
         public function register(object $wp_customize)
@@ -75,12 +80,14 @@ if (!class_exists('Customizer'))
                     'sanitize_callback' => 'sanitize_url',
                 ]
             );
-            $wp_customize->add_control(new WP_Customize_Cropped_Image_Control($wp_customize, 'admin_login_panel_logo',
+            $wp_customize->add_control(new WP_Customize_Cropped_Image_Control($wp_customize,
+                'admin_login_panel_logo',
                 [
                     'label' => __('Login Logo'),
-                    'description' => esc_html__( 'Upload a logo to be featured on the Admin login page' ),
+                    'description' => esc_html__('Upload a logo to be featured on the Admin login page'),
                     'section' => 'admin_login_panel_section_logo',
-                    'priority' => 9, // Optional. Order priority to load the control. Default: 10
+                    'priority' => 9,
+                    // Optional. Order priority to load the control. Default: 10
                     'mime_type' => 'image',
                     'flex_width' => false,
                     'flex_height' => false,
@@ -160,6 +167,45 @@ if (!class_exists('Customizer'))
 
             // Remove the menus section
             $wp_customize->remove_panel('nav_menus');
+        }
+
+        /**
+         * Add core theme support
+         */
+        public function theme_support()
+        {
+            // Add support for default block styles which is CSS that powers the columns block
+            add_theme_support('wp-block-styles');
+
+            // Add support for default wide angle blocks
+            add_theme_support('align-wide');
+
+            // Disable custom font sizes on Typography inside blocks
+            add_theme_support('disable-custom-font-sizes');
+
+            // Add support for RSS feeds
+            add_theme_support('automatic-feed-links');
+
+            // Add support for default custom logo
+            add_theme_support(
+                'custom-logo',
+                [
+                    'height' => 250,
+                    'width' => 250,
+                    'flex-width' => true,
+                    'flex-height' => true,
+                ]
+            );
+        }
+
+        /**
+         * Hide the admin bar on checkbox configuration
+         */
+        public function adminbar_checkbox()
+        {
+            if (true == get_theme_mod('admin_panel_adminbar', false)) {
+                show_admin_bar(false);
+            }
         }
     }
 }
