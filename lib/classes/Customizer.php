@@ -187,8 +187,7 @@ if (!class_exists('Customizer'))
             add_theme_support('automatic-feed-links');
 
             // Add support for default custom logo
-            add_theme_support(
-                'custom-logo',
+            add_theme_support('custom-logo',
                 [
                     'height' => 250,
                     'width' => 250,
