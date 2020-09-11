@@ -1,7 +1,17 @@
 <?php
 
-require __DIR__ . '/login.php';
-require __DIR__ . '/classes/Customizer.php';
+/**
+ * This function hooks into the theme setup
+ */
+if (!function_exists('sillyemu_setup')) {
+    function sillyemu_setup() {
+        require __DIR__ . '/admin/login.php';
+        require __DIR__ . '/classes/Customizer.php';
+        require __DIR__ . '/functions/functions.php';
+        require __DIR__ . '/functions/enqueue.php';
+    }
+}
+add_action('after_setup_theme', 'sillyemu_setup');
 
 /**
  * This function defines the SillyEmu theme constants
