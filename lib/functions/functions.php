@@ -15,26 +15,26 @@ if (!function_exists('sillyemu_navbar_burger')) {
     }
 }
 
-if (!function_exists('sillyemu_logo')) {
-    /**
-     * Display the logo inside the header.php file
-     *
-     * @param $class
-     * @param $logo
-     */
-    function sillyemu_logo($class, $logo) {
-        $output = '
-            <a class="' . $class . '" href="' . esc_url(home_url('/')) . '">
-              <img src="' . esc_url($logo) . '" width="112" height="28">
-            </a>';
-        echo $output;
-    }
-}
+/**
+ * Display the logo inside the header.php file
+ *
+ * @param $class
+ * @param $logo
+ */
+//if (!function_exists('sillyemu_logo')) {
+//    function sillyemu_logo($class, $logo) {
+//        $output = '
+//            <a class="' . $class . '" href="' . esc_url(home_url('/')) . '">
+//              <img src="' . esc_url($logo) . '" width="112" height="28">
+//            </a>';
+//        echo $output;
+//    }
+//}
 
 if (!function_exists('sillyemu_copyright')) {
     function sillyemu_copyright() {
         $output = '
-			<p class="copyright-link">Copyright &copy; '. date('Y') . '
+			<p class="copyright">Copyright &copy; '. date('Y') . '
 				<a href=" ' . home_url() . '">' . PARENT_THEME_NAME . '</a> - All rights reserved.
 			</p>';
         echo $output;
@@ -47,8 +47,8 @@ if (!function_exists('sillyemu_copyright')) {
  *
  * Added for backwards compatibility to support WordPress versions prior to 5.2.0.
  */
-if (!function_exists('wp_body_open')) {
-    function wp_body_open() {
+if (!function_exists('sillyemu_wp_body_open')) {
+    function sillyemu_wp_body_open() {
         do_action('wp_body_open');
     }
 }
