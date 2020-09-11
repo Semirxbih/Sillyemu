@@ -46,6 +46,7 @@ if (!function_exists('sillyemu_copyright')) {
  * Fire the wp_body_open action.
  *
  * Added for backwards compatibility to support WordPress versions prior to 5.2.0.
+ * @usage Create functions and action hook into this function
  */
 if (!function_exists('sillyemu_wp_body_open')) {
     function sillyemu_wp_body_open() {
