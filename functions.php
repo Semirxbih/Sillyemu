@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Sillyemu functions and definitions
  *
